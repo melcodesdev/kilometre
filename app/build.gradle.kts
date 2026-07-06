@@ -66,17 +66,15 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
         release {
-            // DEV-PHASE: release is debuggable so a developer can keep reaching
-            // the on-device DB over adb/run-as (the DB backup workflow depends
-            // on it). This costs ART optimization + Compose debug-check
-            // stripping, so the map/replay is NOT 60fps on weaker devices (a
-            // non-debuggable build measured ~50→60fps on a mid-range device) —
-            // that tradeoff is accepted for now to keep DB access simple. MUST
-            // flip to isDebuggable = false before the 1.0 public release.
+            // Public build: NOT debuggable, so ART can AOT-optimise and
+            // Compose's debug-mode checks are stripped — map/replay run smooth
+            // (a non-debuggable build measured ~50→60fps vs debuggable). The
+            // on-device DB access used during development lives in the separate
+            // `.debug` dev build, so this build doesn't need to be debuggable.
             //
             // Minify stays off until proguard rules are verified against
             // MapLibre + Room.
-            isDebuggable = true
+            isDebuggable = false
             isMinifyEnabled = false
             signingConfig = signingConfigs.getByName("release")
             proguardFiles(
