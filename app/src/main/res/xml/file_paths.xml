@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- GPX exports written to cacheDir/exports/ before sharing. -->
+    <cache-path name="exports" path="exports/" />
+    <!-- Crash log lives in filesDir. -->
+    <files-path name="crash_log" path="." />
+</paths>

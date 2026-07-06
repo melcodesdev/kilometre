@@ -1,0 +1,64 @@
+# Built application files
+*.apk
+*.aab
+*.ap_
+
+# Build artifacts
+build/
+.gradle/
+.cxx/
+.externalNativeBuild/
+captures/
+
+# Files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+
+# Local configuration file (contains SDK path on a specific machine — never commit)
+local.properties
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Keystore and signing — must never land in a public repo
+*.jks
+*.keystore
+keystore.properties
+release-keystore.properties
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor leftovers
+*.swp
+*~
+
+# Kotlin
+.kotlin/
+
+# Logs
+*.log
+
+# Competitor review screenshots — contain personal data from third-party apps
+screenshots/
+
+# Spike / drive CSVs pulled from the device — contain real location data
+spike_logs/
+
+# Device UI coordinate cache — regenerable per device via scripts/dump_screen.py,
+# and accumulates noisy system-UI dumps (lock screen, file pickers). Not source.
+scripts/device_ui_map.json
+
+# Local environment config (not for the repo)
+.env

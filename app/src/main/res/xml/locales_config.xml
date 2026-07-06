@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The languages Kilomètre ships. Declaring this lets Android show a per-app
+     language option in system Settings (Apps > Kilomètre > Language), so the
+     choice made in onboarding can be changed later without a custom settings
+     screen. AppCompat also reads it. -->
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="en" />
+    <locale android:name="fr" />
+</locale-config>
