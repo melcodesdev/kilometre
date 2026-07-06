@@ -1,0 +1,277 @@
+<resources>
+    <string name="app_name">kilometre</string>
+
+    <!-- Bottom-nav tab labels. -->
+    <string name="nav_today">Today</string>
+    <string name="nav_sessions">Sessions</string>
+    <string name="nav_progress">Progress</string>
+
+    <!-- Sessions tab empty state. -->
+    <string name="sessions_placeholder">No sessions yet.</string>
+
+    <!-- Sessions tab — one row per past session. -->
+    <string name="session_distance">%1$.1f km</string>
+    <string name="session_duration_hm">%1$d h %2$d min</string>
+    <string name="session_duration_m">%1$d min</string>
+    <!-- Clock times a session ran, e.g. "14:32 – 15:05". -->
+    <string name="session_time_range">%1$s – %2$s</string>
+
+    <!-- Session detail screen — section headers and stat row labels/values. -->
+    <string name="session_section_stats">Stats</string>
+    <string name="session_section_route">Route</string>
+    <string name="session_section_elevation">Elevation</string>
+    <string name="session_elevation_max">Max</string>
+    <string name="session_elevation_min">Min</string>
+    <string name="session_elevation_value">%1$.0f m</string>
+    <string name="session_stat_distance">Distance</string>
+    <string name="session_stat_duration">Duration</string>
+    <string name="session_stat_time">Time</string>
+    <string name="session_stat_avg_speed">Average speed</string>
+    <string name="session_stat_top_speed">Top speed</string>
+    <string name="session_stat_paused">Paused</string>
+    <string name="session_avg_speed">%1$.0f km/h</string>
+    <string name="session_not_found">Session not found.</string>
+    <string name="cd_back">Back</string>
+    <string name="cd_close_fullscreen_map">Close fullscreen map</string>
+    <string name="cd_recenter_map">Show whole route</string>
+    <string name="cd_compass_north">Point map north</string>
+    <string name="cd_replay_start">Replay drive</string>
+    <string name="cd_replay_play">Play</string>
+    <string name="cd_replay_pause">Pause</string>
+    <string name="cd_replay_exit">Exit replay</string>
+    <string name="cd_replay_restart">Restart</string>
+    <string name="cd_replay_to_end">Skip to end</string>
+    <string name="cd_replay_speed">Playback speed</string>
+    <string name="cd_replay_follow">Follow the dot</string>
+    <string name="replay_speed_format">%1$s×</string>
+    <string name="session_chart_mode_altitude">Alt</string>
+    <string name="session_chart_mode_speed">Speed</string>
+    <string name="session_speed_max">Max %1$.0f km/h</string>
+    <string name="session_speed_min">Min %1$.0f km/h</string>
+    <!-- Bare speed value (no Max/Min prefix), for the combined alt+speed chart labels. -->
+    <string name="session_speed_value">%1$.0f km/h</string>
+    <string name="cd_route_legend">Route colour guide</string>
+    <string name="cd_export_gpx">Export as GPX</string>
+    <string name="cd_delete_session">Delete drive</string>
+    <string name="session_delete_title">Delete this drive?</string>
+    <string name="session_delete_body">This permanently removes the drive and its route. It can\'t be undone.</string>
+    <string name="session_delete_confirm">Delete</string>
+    <string name="export_menu_share">Share</string>
+    <string name="export_menu_save">Save to device</string>
+    <string name="export_menu_quick_save">Quick save</string>
+    <string name="export_saved">Saved</string>
+    <string name="export_quick_saved">Saved to %1$s</string>
+    <string name="export_save_failed">Couldn\'t save the file</string>
+    <string name="legend_title">Reading the route</string>
+    <string name="legend_body">The line changes colour along the direction you drove, from the start colour to the end colour shown below.</string>
+    <string name="legend_start">Start</string>
+    <string name="legend_end">End</string>
+    <string name="legend_ok">Got it</string>
+    <string name="legend_attribution">Map data © OpenStreetMap contributors</string>
+
+    <!-- Progress tab — km total against the AAC goal. -->
+    <string name="progress_goal">%1$.1f km of %2$d km</string>
+    <!-- Bare km number shown large inside the ring (no unit — unit is on the next line). -->
+    <string name="progress_goal_km">%1$.1f</string>
+    <string name="progress_percent">%1$d%%</string>
+    <string name="progress_complete">complete</string>
+    <string name="progress_remaining">%1$.0f km to go</string>
+    <!-- Single combined line below the ring: "3% complete · 963 km to go". -->
+    <string name="progress_percent_remaining">%1$d%% complete · %2$.0f km to go</string>
+
+    <!-- Today tab — recording controls and status. -->
+    <string name="start_recording">Start</string>
+    <string name="stop_recording">Stop</string>
+    <string name="pause_recording">Pause</string>
+    <string name="resume_recording">Resume</string>
+    <string name="today_paused_label">Paused</string>
+    <string name="status_idle">Idle</string>
+    <string name="status_recording">Recording — %1$.2f km</string>
+    <string name="status_session">Session #%1$d</string>
+    <string name="permission_denied">Permissions denied. Cannot record.</string>
+    <string name="today_ready_title">Ready to drive</string>
+    <string name="today_ready_body">Start a session and Kilomètre logs your distance toward the goal.</string>
+    <!-- Compact progress line on the idle Today screen, e.g. "37.3 km of 1000 km driven". -->
+    <string name="today_progress_summary">%1$.1f km of %2$d km driven</string>
+    <string name="today_recording_label">Recording</string>
+    <string name="today_distance_value">%1$.2f</string>
+    <string name="today_km_unit">km</string>
+
+    <!-- Foreground service notification. -->
+    <string name="notification_channel_name">Recording session</string>
+    <string name="notification_title">Recording GPS</string>
+    <string name="notification_text">Recording your drive in the background.</string>
+    <string name="notification_text_paused">Paused — your drive is on hold.</string>
+    <string name="notification_action_stop">Stop</string>
+    <string name="notification_action_pause">Pause</string>
+    <string name="notification_action_resume">Resume</string>
+
+    <!-- Onboarding flow (5 steps, one-time on first launch). -->
+    <string name="onboarding_step_counter">Step %1$d of %2$d</string>
+    <string name="onboarding_language_title">Choose your language</string>
+    <string name="onboarding_language_subtitle">Kilomètre is available in English and French.</string>
+    <!-- Language names are endonyms — shown in their own language in both
+         locales, so these two are identical in values/ and values-fr/. -->
+    <string name="onboarding_language_english">English</string>
+    <string name="onboarding_language_french">Français</string>
+    <string name="onboarding_welcome_title">Welcome to Kilomètre</string>
+    <string name="onboarding_welcome_body">Kilomètre tracks your accompanied driving toward the 3000 km AAC goal. Everything stays on this phone — no account, no cloud, no tracking.</string>
+    <string name="onboarding_get_started">Get started</string>
+    <string name="onboarding_driver_title">Who is learning to drive?</string>
+    <string name="onboarding_driver_subtitle">Just your first name is fine.</string>
+    <string name="onboarding_driver_name_label">Your name</string>
+    <string name="onboarding_accompagnateur_title">Who is accompanying you?</string>
+    <string name="onboarding_accompagnateur_subtitle">The licensed adult who drives with you.</string>
+    <string name="onboarding_accompagnateur_name_label">Their name</string>
+    <string name="onboarding_accompagnateur_relation_label">Relationship (e.g. Mother)</string>
+    <string name="onboarding_permissions_title">One last thing</string>
+    <string name="onboarding_permissions_body">Kilomètre needs location access to record your drives and notification access to show that recording is running. Location is used only while you are recording, and never leaves your phone.</string>
+    <string name="onboarding_continue">Continue</string>
+    <string name="onboarding_back">Back</string>
+    <string name="onboarding_finish">Grant access and finish</string>
+
+    <!-- Settings screen — shared. -->
+    <string name="cd_settings">Settings</string>
+    <string name="settings_title">Settings</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_save">Save</string>
+
+    <!-- Settings — shared row helpers. -->
+    <string name="settings_value_not_set">Not set</string>
+
+    <!-- Settings — hub category rows (the main settings menu). -->
+    <string name="settings_section_mapreplay">Map &amp; replay</string>
+    <string name="settings_cat_profile_sub">Name, accompagnateurs, goal</string>
+    <string name="settings_cat_app_sub">Theme, language, save folder, screen</string>
+    <string name="settings_cat_mapreplay_sub">Map style, route, replay, chart</string>
+    <string name="settings_cat_about_sub">Version, crash log</string>
+
+    <!-- Settings — Profile section. -->
+    <string name="settings_section_profile">Profile</string>
+    <string name="settings_your_name">Your name</string>
+    <string name="settings_accompagnateurs">Accompagnateurs</string>
+    <string name="settings_accompagnateurs_count">%1$d added</string>
+    <string name="settings_km_goal">AAC goal</string>
+    <string name="settings_km_goal_value">%1$d km</string>
+    <string name="settings_edit_name_title">Your name</string>
+    <string name="settings_edit_goal_title">AAC goal</string>
+    <string name="settings_edit_goal_hint">kilometres (e.g. 3000)</string>
+
+    <!-- Settings — App section. -->
+    <string name="settings_section_app">App</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_save_folder">Default save folder</string>
+    <string name="settings_save_folder_none">Not set</string>
+    <string name="settings_save_folder_title">Default save folder</string>
+    <string name="settings_save_folder_change">Change folder</string>
+    <string name="settings_save_folder_remove">Remove</string>
+
+    <!-- Settings — Keep screen on (shown in the App category). -->
+    <string name="settings_keep_screen_on">Keep screen on</string>
+    <string name="settings_keep_screen_on_hint">Stay awake while recording a drive</string>
+
+    <!-- Settings — Map section. -->
+    <string name="settings_section_map">Map</string>
+    <string name="settings_map_style">Map style</string>
+    <string name="settings_map_liberty">Liberty</string>
+    <string name="settings_map_bright">Bright</string>
+    <string name="settings_map_positron">Positron</string>
+    <string name="settings_map_fiord">Fiord</string>
+    <string name="settings_gradient">Route gradient</string>
+    <string name="settings_gradient_start">Start</string>
+    <string name="settings_gradient_end">End</string>
+    <string name="settings_color_picker_start">Start colour</string>
+    <string name="settings_color_picker_end">End colour</string>
+    <string name="settings_color_picker_hex">Hex (RRGGBB)</string>
+
+    <!-- Settings — Replay section. -->
+    <string name="cd_info">More information</string>
+    <string name="settings_section_replay">Replay</string>
+    <string name="settings_replay_pace">Replay length</string>
+    <string name="settings_replay_pace_hint">How long the whole drive takes to replay, regardless of its distance: Short is about 10 seconds, Normal about 20, Long about 40. Turn on Scale to drive length to make longer drives play proportionally longer instead.</string>
+    <string name="settings_replay_pace_short">Short</string>
+    <string name="settings_replay_pace_normal">Normal</string>
+    <string name="settings_replay_pace_long">Long</string>
+    <string name="settings_replay_pace_auto">Auto</string>
+    <string name="settings_replay_scale">Scale to drive length</string>
+    <string name="settings_replay_scale_hint">Longer drives play for longer (about a second per km) so long routes aren\'t a blur. Overrides the fixed length above.</string>
+    <string name="settings_replay_default_speed">Default speed</string>
+    <string name="settings_replay_follow">Start following</string>
+    <string name="settings_replay_follow_hint">Begin replays already tracking the dot</string>
+    <string name="settings_replay_loop">Loop replay</string>
+    <string name="settings_replay_loop_hint">Restart automatically when it ends</string>
+
+    <!-- Settings — Chart section. -->
+    <string name="settings_section_chart">Chart</string>
+    <string name="settings_altitude_smoothing">Altitude smoothing</string>
+    <string name="settings_speed_smoothing">Speed smoothing</string>
+    <string name="settings_smoothing_low">Low</string>
+    <string name="settings_smoothing_medium">Medium</string>
+    <string name="settings_smoothing_high">High</string>
+    <string name="settings_chart_grid">Show gridlines</string>
+    <string name="settings_chart_grid_hint">Dual-axis grid on the elevation chart</string>
+    <string name="settings_chart_altitude_color">Altitude colour</string>
+    <string name="settings_chart_speed_color">Speed colour</string>
+    <string name="settings_replay_dot_color">Replay dot colour</string>
+
+    <!-- Settings — About section. -->
+    <string name="settings_section_about">About</string>
+    <string name="settings_version">%1$s (build %2$d)</string>
+    <string name="settings_crash_log_share">Share crash log</string>
+    <string name="settings_crash_log_share_hint">Help diagnose a past crash</string>
+    <string name="settings_crash_log_none">No crashes recorded</string>
+
+    <!-- Accompagnateur management screen. -->
+    <string name="settings_accompagnateurs_title">Accompagnateurs</string>
+    <string name="cd_add_accompagnateur">Add accompagnateur</string>
+    <string name="cd_edit_accompagnateur">Edit</string>
+    <string name="cd_delete_accompagnateur">Delete</string>
+    <string name="settings_accompagnateur_empty">No accompagnateurs yet.</string>
+    <string name="settings_accompagnateur_name_label">Name</string>
+    <string name="settings_accompagnateur_relation_label">Relationship</string>
+    <string name="settings_accompagnateur_delete_confirm">Delete %1$s?</string>
+    <string name="settings_accompagnateur_add_title">Add accompagnateur</string>
+    <string name="settings_accompagnateur_edit_title">Edit accompagnateur</string>
+
+    <!-- AAC milestone tracking (2026-06-11) -->
+    <string name="onboarding_tracking_title">How do you want to track?</string>
+    <string name="onboarding_tracking_subtitle">AAC mode reminds you when a rendez-vous pédagogique is due and steps your goal up as you go. Simple mode just counts kilometres.</string>
+    <string name="onboarding_tracking_aac">Follow AAC milestones</string>
+    <string name="onboarding_tracking_simple">Simple tracking</string>
+
+    <string name="settings_aac_mode">Follow AAC milestones</string>
+    <string name="settings_aac_mode_sub">Remind me of my rendez-vous pédagogique at 1000 and 3000 km, and step the goal up automatically.</string>
+
+    <string name="milestone_channel_name">Milestones</string>
+    <string name="notification_rdv_title">Rendez-vous pédagogique</string>
+    <string name="notification_rdv_text_first">You\'ve reached %1$d km — time to book your first rendez-vous pédagogique with the auto-école.</string>
+    <string name="notification_rdv_text_final">You\'ve driven your 3000 km, the AAC minimum. Book your final rendez-vous pédagogique.</string>
+
+    <string name="progress_rdv_title">Rendez-vous pédagogique to book</string>
+    <string name="progress_rdv_body_first">You\'ve reached %1$d km. It\'s time for your first rendez-vous pédagogique with the auto-école. Once it\'s arranged, tap below and your goal moves on to 3000 km.</string>
+    <string name="progress_rdv_body_final">You\'ve driven your 3000 km, the AAC minimum. Book your final rendez-vous pédagogique to close out the accompanied phase.</string>
+    <string name="progress_rdv_ack">Got it</string>
+
+    <!-- Updates / source code (2026-06-11) -->
+    <string name="settings_section_updates">Updates</string>
+    <string name="settings_source_code">Source code</string>
+    <string name="settings_source_code_sub">View the project on GitHub</string>
+    <string name="settings_check_updates">Check for updates</string>
+    <string name="settings_check_updates_sub">See if a newer version is available</string>
+    <string name="settings_whats_new">What\'s new</string>
+    <string name="settings_whats_new_sub">Release notes for the latest version</string>
+    <string name="update_checking">Checking for updates…</string>
+    <string name="update_available_title">Update available</string>
+    <string name="update_available_body">Version %1$s is available. You\'re on %2$s.</string>
+    <string name="update_uptodate_title">You\'re up to date</string>
+    <string name="update_uptodate_body">Version %1$s is the latest.</string>
+    <string name="update_failed_title">Couldn\'t check</string>
+    <string name="update_failed_body">No connection, or GitHub is unavailable. Try again later.</string>
+    <string name="update_no_releases">No releases found yet.</string>
+    <string name="update_download">Download</string>
+    <string name="update_dismiss">Close</string>
+</resources>

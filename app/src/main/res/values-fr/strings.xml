@@ -1,0 +1,273 @@
+<resources>
+    <string name="app_name">kilometre</string>
+
+    <!-- Bottom-nav tab labels. -->
+    <string name="nav_today">Aujourd\'hui</string>
+    <string name="nav_sessions">Sessions</string>
+    <string name="nav_progress">Progression</string>
+
+    <!-- Sessions tab empty state. -->
+    <string name="sessions_placeholder">Aucune session pour le moment.</string>
+
+    <!-- Sessions tab — one row per past session. -->
+    <string name="session_distance">%1$.1f km</string>
+    <string name="session_duration_hm">%1$d h %2$d min</string>
+    <string name="session_duration_m">%1$d min</string>
+    <!-- Heures de la session, p. ex. « 14:32 – 15:05 ». -->
+    <string name="session_time_range">%1$s – %2$s</string>
+
+    <!-- Écran détail d'une session — en-têtes de section et libellés/valeurs des stats. -->
+    <string name="session_section_stats">Statistiques</string>
+    <string name="session_section_route">Parcours</string>
+    <string name="session_section_elevation">Altitude</string>
+    <string name="session_elevation_max">Max</string>
+    <string name="session_elevation_min">Min</string>
+    <string name="session_elevation_value">%1$.0f m</string>
+    <string name="session_stat_distance">Distance</string>
+    <string name="session_stat_duration">Durée</string>
+    <string name="session_stat_time">Heure</string>
+    <string name="session_stat_avg_speed">Vitesse moyenne</string>
+    <string name="session_stat_top_speed">Vitesse maximale</string>
+    <string name="session_stat_paused">En pause</string>
+    <string name="session_avg_speed">%1$.0f km/h</string>
+    <string name="session_not_found">Session introuvable.</string>
+    <string name="cd_back">Retour</string>
+    <string name="cd_close_fullscreen_map">Fermer le plein écran</string>
+    <string name="cd_recenter_map">Afficher tout l\'itinéraire</string>
+    <string name="cd_compass_north">Orienter la carte vers le nord</string>
+    <string name="cd_replay_start">Rejouer le trajet</string>
+    <string name="cd_replay_play">Lire</string>
+    <string name="cd_replay_pause">Pause</string>
+    <string name="cd_replay_exit">Quitter la lecture</string>
+    <string name="cd_replay_restart">Recommencer</string>
+    <string name="cd_replay_to_end">Aller à la fin</string>
+    <string name="cd_replay_speed">Vitesse de lecture</string>
+    <string name="cd_replay_follow">Suivre le point</string>
+    <string name="replay_speed_format">%1$s×</string>
+    <string name="session_chart_mode_altitude">Alt</string>
+    <string name="session_chart_mode_speed">Vitesse</string>
+    <string name="session_speed_max">Max %1$.0f km/h</string>
+    <string name="session_speed_min">Min %1$.0f km/h</string>
+    <!-- Valeur de vitesse seule (sans Max/Min), pour les libellés combinés alt+vitesse. -->
+    <string name="session_speed_value">%1$.0f km/h</string>
+    <string name="cd_route_legend">Guide des couleurs du trajet</string>
+    <string name="cd_export_gpx">Exporter en GPX</string>
+    <string name="cd_delete_session">Supprimer le trajet</string>
+    <string name="session_delete_title">Supprimer ce trajet ?</string>
+    <string name="session_delete_body">Le trajet et son itinéraire seront définitivement supprimés. Action irréversible.</string>
+    <string name="session_delete_confirm">Supprimer</string>
+    <string name="export_menu_share">Partager</string>
+    <string name="export_menu_save">Enregistrer sur l\'appareil</string>
+    <string name="export_menu_quick_save">Enregistrement rapide</string>
+    <string name="export_saved">Enregistré</string>
+    <string name="export_quick_saved">Enregistré dans %1$s</string>
+    <string name="export_save_failed">Échec de l\'enregistrement du fichier</string>
+    <string name="legend_title">Lire le trajet</string>
+    <string name="legend_body">La ligne change de couleur le long du trajet, de la couleur de départ à la couleur d\'arrivée affichées ci-dessous.</string>
+    <string name="legend_start">Départ</string>
+    <string name="legend_end">Arrivée</string>
+    <string name="legend_ok">Compris</string>
+    <string name="legend_attribution">Données cartographiques © contributeurs OpenStreetMap</string>
+
+    <!-- Progress tab — km total against the AAC goal. -->
+    <string name="progress_goal">%1$.1f km sur %2$d km</string>
+    <string name="progress_goal_km">%1$.1f</string>
+    <string name="progress_percent">%1$d %%</string>
+    <string name="progress_complete">atteint</string>
+    <string name="progress_remaining">%1$.0f km restants</string>
+    <string name="progress_percent_remaining">%1$d %% atteint · %2$.0f km restants</string>
+
+    <!-- Today tab — recording controls and status. -->
+    <string name="start_recording">Démarrer</string>
+    <string name="stop_recording">Arrêter</string>
+    <string name="pause_recording">Pause</string>
+    <string name="resume_recording">Reprendre</string>
+    <string name="today_paused_label">En pause</string>
+    <string name="status_idle">En attente</string>
+    <string name="status_recording">Enregistrement — %1$.2f km</string>
+    <string name="status_session">Session n°%1$d</string>
+    <string name="permission_denied">Autorisations refusées. Enregistrement impossible.</string>
+    <string name="today_ready_title">Prêt à conduire</string>
+    <string name="today_ready_body">Démarrez une session et Kilomètre enregistre votre distance vers l\'objectif.</string>
+    <string name="today_progress_summary">%1$.1f km sur %2$d km parcourus</string>
+    <string name="today_recording_label">Enregistrement</string>
+    <string name="today_distance_value">%1$.2f</string>
+    <string name="today_km_unit">km</string>
+
+    <!-- Foreground service notification. -->
+    <string name="notification_channel_name">Session d\'enregistrement</string>
+    <string name="notification_title">Enregistrement GPS</string>
+    <string name="notification_text">Enregistrement de votre trajet en arrière-plan.</string>
+    <string name="notification_text_paused">En pause — votre trajet est suspendu.</string>
+    <string name="notification_action_stop">Arrêter</string>
+    <string name="notification_action_pause">Pause</string>
+    <string name="notification_action_resume">Reprendre</string>
+
+    <!-- Onboarding flow (5 steps, one-time on first launch). -->
+    <string name="onboarding_step_counter">Étape %1$d sur %2$d</string>
+    <string name="onboarding_language_title">Choisissez votre langue</string>
+    <string name="onboarding_language_subtitle">Kilomètre est disponible en français et en anglais.</string>
+    <!-- Endonyms — identical to values/ on purpose. -->
+    <string name="onboarding_language_english">English</string>
+    <string name="onboarding_language_french">Français</string>
+    <string name="onboarding_welcome_title">Bienvenue sur Kilomètre</string>
+    <string name="onboarding_welcome_body">Kilomètre suit votre conduite accompagnée vers l\'objectif des 3000 km de l\'AAC. Tout reste sur ce téléphone — pas de compte, pas de cloud, aucun suivi.</string>
+    <string name="onboarding_get_started">Commencer</string>
+    <string name="onboarding_driver_title">Qui apprend à conduire ?</string>
+    <string name="onboarding_driver_subtitle">Votre prénom suffit.</string>
+    <string name="onboarding_driver_name_label">Votre prénom</string>
+    <string name="onboarding_accompagnateur_title">Qui vous accompagne ?</string>
+    <string name="onboarding_accompagnateur_subtitle">L\'adulte titulaire du permis qui conduit avec vous.</string>
+    <string name="onboarding_accompagnateur_name_label">Son prénom</string>
+    <string name="onboarding_accompagnateur_relation_label">Lien (ex. Mère)</string>
+    <string name="onboarding_permissions_title">Une dernière chose</string>
+    <string name="onboarding_permissions_body">Kilomètre a besoin de l\'accès à la localisation pour enregistrer vos trajets et de l\'accès aux notifications pour indiquer qu\'un enregistrement est en cours. La localisation n\'est utilisée que pendant l\'enregistrement et ne quitte jamais votre téléphone.</string>
+    <string name="onboarding_continue">Continuer</string>
+    <string name="onboarding_back">Retour</string>
+    <string name="onboarding_finish">Autoriser et terminer</string>
+
+    <!-- Écran paramètres — partagé. -->
+    <string name="cd_settings">Paramètres</string>
+    <string name="settings_title">Paramètres</string>
+    <string name="dialog_cancel">Annuler</string>
+    <string name="dialog_save">Enregistrer</string>
+
+    <!-- Paramètres — éléments de ligne partagés. -->
+    <string name="settings_value_not_set">Non défini</string>
+
+    <!-- Paramètres — lignes du menu principal des paramètres. -->
+    <string name="settings_section_mapreplay">Carte et lecture</string>
+    <string name="settings_cat_profile_sub">Prénom, accompagnateurs, objectif</string>
+    <string name="settings_cat_app_sub">Thème, langue, dossier, écran</string>
+    <string name="settings_cat_mapreplay_sub">Style de carte, trajet, lecture, graphique</string>
+    <string name="settings_cat_about_sub">Version, journal de crash</string>
+
+    <!-- Paramètres — section Profil. -->
+    <string name="settings_section_profile">Profil</string>
+    <string name="settings_your_name">Votre prénom</string>
+    <string name="settings_accompagnateurs">Accompagnateurs</string>
+    <string name="settings_accompagnateurs_count">%1$d ajouté(s)</string>
+    <string name="settings_km_goal">Objectif AAC</string>
+    <string name="settings_km_goal_value">%1$d km</string>
+    <string name="settings_edit_name_title">Votre prénom</string>
+    <string name="settings_edit_goal_title">Objectif AAC</string>
+    <string name="settings_edit_goal_hint">kilomètres (ex. 3000)</string>
+
+    <!-- Paramètres — section Application. -->
+    <string name="settings_section_app">Application</string>
+    <string name="settings_theme">Thème</string>
+    <string name="settings_theme_system">Système</string>
+    <string name="settings_theme_light">Clair</string>
+    <string name="settings_theme_dark">Sombre</string>
+    <string name="settings_language">Langue</string>
+    <string name="settings_save_folder">Dossier d\'enregistrement par défaut</string>
+    <string name="settings_save_folder_none">Non défini</string>
+    <string name="settings_save_folder_title">Dossier d\'enregistrement par défaut</string>
+    <string name="settings_save_folder_change">Changer de dossier</string>
+    <string name="settings_save_folder_remove">Supprimer</string>
+
+    <!-- Paramètres — Garder l\'écran allumé (dans la catégorie Application). -->
+    <string name="settings_keep_screen_on">Garder l\'écran allumé</string>
+    <string name="settings_keep_screen_on_hint">Rester allumé pendant l\'enregistrement</string>
+
+    <!-- Paramètres — section Carte. -->
+    <string name="settings_section_map">Carte</string>
+    <string name="settings_map_style">Style de carte</string>
+    <string name="settings_map_liberty">Liberty</string>
+    <string name="settings_map_bright">Bright</string>
+    <string name="settings_map_positron">Positron</string>
+    <string name="settings_map_fiord">Fiord</string>
+    <string name="settings_gradient">Dégradé du trajet</string>
+    <string name="settings_gradient_start">Départ</string>
+    <string name="settings_gradient_end">Arrivée</string>
+    <string name="settings_color_picker_start">Couleur de départ</string>
+    <string name="settings_color_picker_end">Couleur d\'arrivée</string>
+    <string name="settings_color_picker_hex">Hex (RRGGBB)</string>
+
+    <!-- Paramètres — section Lecture. -->
+    <string name="cd_info">Plus d\'informations</string>
+    <string name="settings_section_replay">Lecture</string>
+    <string name="settings_replay_pace">Durée de la lecture</string>
+    <string name="settings_replay_pace_hint">Le temps que met tout le trajet à être rejoué, quelle que soit sa distance : Courte environ 10 secondes, Normale environ 20, Longue environ 40. Activez Adapter à la distance pour que les longs trajets durent proportionnellement plus longtemps.</string>
+    <string name="settings_replay_pace_short">Courte</string>
+    <string name="settings_replay_pace_normal">Normale</string>
+    <string name="settings_replay_pace_long">Longue</string>
+    <string name="settings_replay_pace_auto">Auto</string>
+    <string name="settings_replay_scale">Adapter à la distance</string>
+    <string name="settings_replay_scale_hint">Les trajets plus longs durent plus longtemps (environ une seconde par km) pour ne pas défiler trop vite. Remplace la durée fixe ci-dessus.</string>
+    <string name="settings_replay_default_speed">Vitesse par défaut</string>
+    <string name="settings_replay_follow">Suivre dès le départ</string>
+    <string name="settings_replay_follow_hint">Démarrer la lecture en suivant le point</string>
+    <string name="settings_replay_loop">Lecture en boucle</string>
+    <string name="settings_replay_loop_hint">Recommencer automatiquement à la fin</string>
+
+    <!-- Paramètres — section Graphique. -->
+    <string name="settings_section_chart">Graphique</string>
+    <string name="settings_altitude_smoothing">Lissage de l\'altitude</string>
+    <string name="settings_speed_smoothing">Lissage de la vitesse</string>
+    <string name="settings_smoothing_low">Faible</string>
+    <string name="settings_smoothing_medium">Moyen</string>
+    <string name="settings_smoothing_high">Élevé</string>
+    <string name="settings_chart_grid">Afficher la grille</string>
+    <string name="settings_chart_grid_hint">Grille à deux axes sur le graphique d\'altitude</string>
+    <string name="settings_chart_altitude_color">Couleur de l\'altitude</string>
+    <string name="settings_chart_speed_color">Couleur de la vitesse</string>
+    <string name="settings_replay_dot_color">Couleur du point de lecture</string>
+
+    <!-- Paramètres — section À propos. -->
+    <string name="settings_section_about">À propos</string>
+    <string name="settings_version">%1$s (build %2$d)</string>
+    <string name="settings_crash_log_share">Partager le journal de crash</string>
+    <string name="settings_crash_log_share_hint">Aide à diagnostiquer un crash passé</string>
+    <string name="settings_crash_log_none">Aucun crash enregistré</string>
+
+    <!-- Écran de gestion des accompagnateurs. -->
+    <string name="settings_accompagnateurs_title">Accompagnateurs</string>
+    <string name="cd_add_accompagnateur">Ajouter un accompagnateur</string>
+    <string name="cd_edit_accompagnateur">Modifier</string>
+    <string name="cd_delete_accompagnateur">Supprimer</string>
+    <string name="settings_accompagnateur_empty">Aucun accompagnateur.</string>
+    <string name="settings_accompagnateur_name_label">Prénom</string>
+    <string name="settings_accompagnateur_relation_label">Lien</string>
+    <string name="settings_accompagnateur_delete_confirm">Supprimer %1$s ?</string>
+    <string name="settings_accompagnateur_add_title">Ajouter un accompagnateur</string>
+    <string name="settings_accompagnateur_edit_title">Modifier l\'accompagnateur</string>
+
+    <!-- Suivi des étapes AAC (2026-06-11) -->
+    <string name="onboarding_tracking_title">Comment suivre votre progression ?</string>
+    <string name="onboarding_tracking_subtitle">Le mode AAC vous rappelle vos rendez-vous pédagogiques et fait monter votre objectif au fil des kilomètres. Le mode simple compte juste les kilomètres.</string>
+    <string name="onboarding_tracking_aac">Suivre les étapes AAC</string>
+    <string name="onboarding_tracking_simple">Suivi simple</string>
+
+    <string name="settings_aac_mode">Suivre les étapes AAC</string>
+    <string name="settings_aac_mode_sub">Me rappeler mes rendez-vous pédagogiques à 1000 et 3000 km, et faire monter l\'objectif automatiquement.</string>
+
+    <string name="milestone_channel_name">Étapes</string>
+    <string name="notification_rdv_title">Rendez-vous pédagogique</string>
+    <string name="notification_rdv_text_first">Vous avez atteint %1$d km — c\'est le moment de prendre votre premier rendez-vous pédagogique avec l\'auto-école.</string>
+    <string name="notification_rdv_text_final">Vous avez parcouru vos 3000 km, le minimum AAC. Prenez votre dernier rendez-vous pédagogique.</string>
+
+    <string name="progress_rdv_title">Rendez-vous pédagogique à prévoir</string>
+    <string name="progress_rdv_body_first">Vous avez atteint %1$d km. C\'est le moment de votre premier rendez-vous pédagogique avec l\'auto-école. Une fois pris, appuyez ci-dessous et votre objectif passe à 3000 km.</string>
+    <string name="progress_rdv_body_final">Vous avez parcouru vos 3000 km, le minimum AAC. Prenez votre dernier rendez-vous pédagogique pour clôturer la phase de conduite accompagnée.</string>
+    <string name="progress_rdv_ack">J\'ai compris</string>
+
+    <!-- Mises à jour / code source (2026-06-11) -->
+    <string name="settings_section_updates">Mises à jour</string>
+    <string name="settings_source_code">Code source</string>
+    <string name="settings_source_code_sub">Voir le projet sur GitHub</string>
+    <string name="settings_check_updates">Rechercher des mises à jour</string>
+    <string name="settings_check_updates_sub">Voir si une version plus récente est disponible</string>
+    <string name="settings_whats_new">Nouveautés</string>
+    <string name="settings_whats_new_sub">Notes de la dernière version</string>
+    <string name="update_checking">Recherche de mises à jour…</string>
+    <string name="update_available_title">Mise à jour disponible</string>
+    <string name="update_available_body">La version %1$s est disponible. Vous êtes en %2$s.</string>
+    <string name="update_uptodate_title">Vous êtes à jour</string>
+    <string name="update_uptodate_body">La version %1$s est la plus récente.</string>
+    <string name="update_failed_title">Échec de la vérification</string>
+    <string name="update_failed_body">Pas de connexion, ou GitHub est indisponible. Réessayez plus tard.</string>
+    <string name="update_no_releases">Aucune version trouvée pour l\'instant.</string>
+    <string name="update_download">Télécharger</string>
+    <string name="update_dismiss">Fermer</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- AppCompat parent (not framework Material) so MainActivity can be an
+         AppCompatActivity, which is what AppCompatDelegate.setApplicationLocales
+         needs to apply the per-app language on every API level. The window
+         theme only paints the first frame; Compose's KilometreTheme owns all
+         real colour. NoActionBar because the UI is entirely Compose. -->
+    <style name="Theme.Kilometre" parent="Theme.AppCompat.Light.NoActionBar" />
+</resources>
