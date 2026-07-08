@@ -55,7 +55,7 @@ The central entity.
         ForeignKey(entity = Accompagnateur::class,
                    parentColumns = ["id"], childColumns = ["accompagnateurId"])
     ],
-    indices = [Index("driverId"), Index("accompagnateurId"), Index("startedAt")])
+    indices = [Index("driverId"), Index("accompagnateurId"), Index("startedAt"), Index("state")])
 data class Session(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val driverId: Long,
@@ -64,6 +64,7 @@ data class Session(
     val startedAt: Instant,
     val endedAt: Instant?,                    // null while session is active
     val pausedSeconds: Long = 0,              // accumulated pause time
+    val manualPauseStartedAt: Instant? = null, // schema v2: non-null = live session is manually paused
 
     val distanceMeters: Double = 0.0,
     val durationSeconds: Long = 0,
@@ -88,6 +89,8 @@ data class Session(
     val metadata: String = "{}"               // JSON blob for evolving fields
 )
 ```
+
+Implementation status: all columns above exist. `signaturePath`, `signedAt`, `prevHash`, `contentHash`, `signatureHash` are always null so far — they go live with signing. `notes` and `manualEntry` are written by nothing yet. Do not confuse the per-row `schemaVersion` field (the canonical-payload format version, still 1) with the Room DATABASE version, which is 2: the only schema change so far is the additive `manualPauseStartedAt` column, applied by a Room `AutoMigration(1, 2)`.
 
 ### GpsPoint
 

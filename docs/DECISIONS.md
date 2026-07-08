@@ -27,6 +27,8 @@ Material 3 is the default. The app ships with stock Material 3 components. Visua
 
 ViewModel → State → Composable is the standard Compose pattern. Manual DI (passing dependencies through constructors) is enough for a project this size.
 
+**Updated in practice:** the manual-DI half held — `AppContainer` is the single DI root, no Hilt — but no ViewModels were ever introduced. Screens collect repository `Flow`s directly with `collectAsStateWithLifecycle`; state is thin enough that a ViewModel layer earned nothing. A ViewModel is still the intended next step if a screen's state grows complex. See `docs/ARCHITECTURE.md`.
+
 **Rejected:** Hilt for now. The learning curve doesn't pay off until the project has many ViewModels and complex dependency graphs.
 
 **Rejected:** MVI / Redux-style. Overkill for this scope. The simpler MVVM pattern with StateFlow is sufficient.
@@ -83,13 +85,15 @@ The Phase 0 spike uses `FusedLocationProviderClient`. If F-Droid acceptance beco
 
 ### Adaptive sampling
 
+**REVERSED.** This was the original plan; it was dropped before it shipped. The app now records at a fixed 1 Hz `PRIORITY_HIGH_ACCURACY` cadence. On-device measurement (a 34-min, ~19 km drive) showed fixed 1 Hz costs only ~0.8% battery yet gives clean city-speed distance, whereas adaptive down-sampling at low speed risked dropping the short hops that distance accumulation depends on. Protecting distance accuracy beat the marginal battery saving. The original design is kept below for the record.
+
 The GPS sampling rate adjusts to the current speed:
 - Speed > 30 km/h: 2 s interval, `PRIORITY_HIGH_ACCURACY`.
 - 5–30 km/h: 5 s interval, `PRIORITY_HIGH_ACCURACY`.
 - < 5 km/h: 15 s interval, `PRIORITY_BALANCED_POWER_ACCURACY`.
 - Accuracy degraded (> 50 m reported): force 1 s interval until signal recovers.
 
-**Rejected:** Fixed 1 Hz sampling. Burns battery during stops with no benefit.
+**Rejected at the time (now the shipped choice):** Fixed 1 Hz sampling.
 
 **Rejected:** User-configurable sampling. Adds settings complexity for a decision the app can make automatically.
 

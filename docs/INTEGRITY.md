@@ -2,6 +2,7 @@
 
 > **Design document.** Describes the intended design and may run ahead of the current build (0.3.0). See `ROADMAP.md` for what has actually shipped.
 
+Status: NOT yet built. No session is signed yet, no hash chain is computed, and the `EditLog` table plus the `Session` hash columns exist but are empty. This is the spec for when signing lands.
 
 What "tamper-evident" means in Kilomètre, what it protects against, and what it explicitly does not.
 

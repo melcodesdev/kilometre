@@ -28,6 +28,8 @@ While a session is active, the app shows:
 - A pause/resume button.
 - A stop button.
 
+Today: distance, current speed (read from the newest GPS sample, hidden while paused), and the pause/resume and stop controls are implemented. Elapsed time is specced here but not yet shown live.
+
 **Acceptance:** Stats update at least once per second when the device has a GPS fix.
 
 ### Stop a session manually
@@ -36,6 +38,8 @@ The user taps STOP. The app:
 - Updates the Session row to DRAFT with final stats.
 - Stops the foreground service.
 - Navigates to the signature screen.
+
+Today: the on-screen STOP asks for confirmation first, to avoid ending a drive by mistake (a mistap would split one drive into two rows); the notification/lock-screen STOP stays one-tap. The signature screen is not built yet; STOP finalizes the row to DRAFT and returns to the Today screen.
 
 **Acceptance:** STOP → signature screen transition completes in under 1 second.
 
@@ -52,6 +56,8 @@ If speed remains below 3 km/h for more than 5 minutes during an active session, 
 **Acceptance:** A 15-minute mid-drive stop appears in the session's `pausedSeconds` field as ~600 seconds (excluding the 5-minute threshold).
 
 ## Signature
+
+Nothing in this section is built yet — the whole signature + hash-chain flow is the signing phase (see `docs/INTEGRITY.md`). All sessions are DRAFT until it lands. The `EditLog` entity and the `Session` hash columns exist in the schema but are unused.
 
 ### Draw signature on canvas
 
@@ -105,24 +111,26 @@ Toggleable in settings. Off by default for battery.
 
 ### Today tab
 
-- Big START button (or RESUME if session is active).
-- Last session card (date, duration, km, signed status).
-- Accompagnateur picker dropdown.
+- Big START button (or, while recording, PAUSE/RESUME + STOP).
+- Idle hero with a compact "X km of Y km driven" progress line once any session exists.
+- Live recording hero: pulsing dot, big distance number, current speed.
+
+Built today. Note: no last-session card and no accompagnateur picker dropdown yet — a single accompagnateur is used automatically; a per-session picker for the 2+ case is planned.
 
 ### Sessions list
 
-- Chronological list of all sessions.
-- Each row shows: date, duration, km, state (DRAFT/SIGNED/DISCARDED), road-type icon if classified.
+- Chronological list of all sessions (newest first).
+- Each row shows: date, time range, duration, km, and a route-shape thumbnail.
 - Tap → detail.
-- Pull-to-refresh re-runs integrity check.
+
+Built today. Not yet built: a DRAFT/SIGNED/DISCARDED state marker (all sessions are DRAFT until signing ships), the road-type icon, and pull-to-refresh integrity check.
 
 ### Progress tab
 
-- Total km vs km goal (3000 for AAC, 1000 for supervisée).
-- Total hours.
-- Number of sessions.
-- Road-type breakdown bar chart (autoroute / route / ville).
-- Monthly km chart.
+- Total km vs km goal (a circular ring with percentage), goal 3000 for AAC / 1000 for supervisée.
+- AAC rendez-vous-pédagogique card when a milestone is reached (AAC mode).
+
+Built today. Not yet built: total hours, session count, road-type breakdown chart, monthly km chart.
 
 ### Calendar heatmap
 
@@ -130,9 +138,11 @@ GitHub-style heatmap of driving days over the last year.
 
 ### Milestone notifications
 
-Optional, toggleable. Notifies when crossing 500, 1000, 1500, 2000, 2500, 3000 km.
+Optional, toggleable ("Follow AAC milestones" mode). Built today. Notifies when crossing the AAC rendez-vous-pédagogique marks — 1000 km and 3000 km (the two km-relevant RDVs; the real AAC rules have no 2000 km RDV). Not a generic every-500 km notifier.
 
 ## Data enrichment
+
+Nothing in this section is built yet — enrichment (day/night, weather, road-type) is a later phase. No network clients for Open-Meteo/Overpass exist yet.
 
 ### Auto day/night detection
 
@@ -164,7 +174,7 @@ French and English, both fully translated at launch.
 
 ### Driving scheme selection
 
-AAC (3000 km, 1 year minimum), Supervisée (1000 km, 3 months minimum), or Generic (no goal, no minimum).
+As shipped: there is no scheme picker. The driver is AAC by default. What exists instead is a "Follow AAC milestones" toggle (AAC RDV ladder vs a single editable goal) in onboarding and Profile, plus an editable km goal in Profile. The `DrivingScheme` enum (AAC / SUPERVISEE / GENERIC) exists in the schema for later; supervisée/generic as first-class selectable modes are deferred.
 
 ### Accompagnateur management
 
@@ -180,7 +190,7 @@ PIN or biometric lock on app launch. Independent from DB encryption.
 
 ### Battery optimization exemption prompt
 
-On first session start, prompt the user to whitelist the app from battery optimization. Explain why. Link to the system setting.
+On first session start, prompt the user to whitelist the app from battery optimization. Explain why. Link to the system setting. NOT yet built — on the reliability backlog; the `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` permission is not yet declared.
 
 ### Crash log share
 
@@ -190,15 +200,15 @@ In Settings → About: "Share crash log" button. Triggers `ACTION_SEND` intent w
 
 ### Export single session as GPX
 
-In session detail: "Export GPX" button. Saves to user-chosen folder via Storage Access Framework.
+In session detail, a share/export menu: Share (FileProvider), Save to device (Storage Access Framework), and Quick save into a configured default folder. Built today.
 
 ### Export all sessions as CSV
 
-In Settings: "Export all as CSV". Saves to user-chosen folder.
+In Settings: "Export all as CSV". Saves to user-chosen folder. NOT yet built — only GPX export exists.
 
 ### Export full backup ZIP
 
-In Settings: "Backup all data". Generates a ZIP containing GPX files, CSV, JSON, signatures, manifest. Saves to user-chosen folder.
+In Settings: "Backup all data". Generates a ZIP containing GPX files, CSV, JSON, signatures, manifest. Saves to user-chosen folder. NOT yet built.
 
 ### Optional backup encryption
 
@@ -206,9 +216,11 @@ Toggle in backup dialog: "Encrypt backup". User provides a passphrase. Backup is
 
 ### Restore from backup
 
-In Settings: "Restore from backup". User selects a ZIP. App validates schema version and hash chain before importing. If chain is broken, user is warned and asked to confirm.
+In Settings: "Restore from backup". User selects a ZIP. App validates schema version and hash chain before importing. If chain is broken, user is warned and asked to confirm. NOT yet built.
 
 ## Integrity
+
+Nothing in this section is built yet — integrity checking depends on the signing/hash-chain work (see `docs/INTEGRITY.md` and `docs/ROADMAP.md`).
 
 ### Verify hash chain on app open
 
@@ -224,13 +236,15 @@ In session detail, if the hashes don't match, show a "Tampering detected" banner
 
 ### First-launch onboarding
 
-A 4-step flow:
-1. Welcome + what the app does + what it doesn't do.
-2. Choose driving scheme (AAC / Supervisée / Generic).
-3. Driver info (name, birthdate, AAC start date).
+As shipped, a 6-step flow:
+1. Language (English / Français, applied immediately).
+2. Welcome + what the app does and doesn't do.
+3. Driver name.
 4. First accompagnateur (name, relation).
+5. Follow AAC milestones? (AAC RDV ladder vs a single goal).
+6. Permissions (fine + coarse location, notifications).
 
-Skipped on subsequent launches.
+No scheme picker (see Driving scheme selection). Skipped on subsequent launches.
 
 ## F-Droid requirements
 

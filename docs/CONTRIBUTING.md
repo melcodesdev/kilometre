@@ -72,8 +72,8 @@ For trivial changes (typos, dependency version bumps, lint fixes), a direct PR i
 
 - Composable function names are PascalCase: `TodayScreen`, not `todayScreen`.
 - Composables that emit UI take a `Modifier` parameter, defaulting to `Modifier`.
-- State is hoisted: composables receive state and callbacks, not their own ViewModels (with rare exceptions for screen-level composables).
-- Avoid putting business logic inside composables. Put it in ViewModels or domain code.
+- State is hoisted: composables receive state and callbacks. The app currently uses no ViewModels — screen composables read `AppContainer` and collect repository `Flow`s directly with `collectAsStateWithLifecycle`. A ViewModel is the intended escape hatch only if a screen's state genuinely outgrows that.
+- Avoid putting business logic inside composables. Put it in the domain layer (`SessionRepository`, `SessionLifecycle`, and the pure helpers), not in the UI.
 
 ### Comments and documentation
 

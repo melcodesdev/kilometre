@@ -84,7 +84,7 @@ OpenStreetMap classifies roads using `highway=*` tags. Kilomètre groups them fo
 
 **Auto-stop** — A session automatically stops after 90 minutes of sustained speed < 3 km/h.
 
-**Adaptive sampling** — GPS sampling rate adjusts to speed.
+**Adaptive sampling** — GPS sampling rate that would adjust to speed. Planned originally but reversed; the app records at a fixed 1 Hz instead. See `DECISIONS.md`.
 
 ## Acronyms used throughout the docs
 
@@ -104,7 +104,7 @@ OpenStreetMap classifies roads using `highway=*` tags. Kilomètre groups them fo
 - **JVM** — Java Virtual Machine.
 - **KSP** — Kotlin Symbol Processing, the modern Kotlin annotation processor (replaces KAPT).
 - **MVI** — Model-View-Intent, a UI architecture pattern (rejected).
-- **MVVM** — Model-View-ViewModel, the chosen UI architecture pattern.
+- **MVVM** — Model-View-ViewModel, the originally-chosen UI pattern. In practice the app uses no ViewModels — composables collect repository `Flow`s directly (see `DECISIONS.md`).
 - **OEM** — Original Equipment Manufacturer. Samsung, Xiaomi, etc.
 - **OSM** — OpenStreetMap.
 - **PBKDF2** — Password-Based Key Derivation Function 2, used to derive encryption keys from passphrases.

@@ -17,13 +17,20 @@ Kilomètre is a logbook for the French AAC (apprentissage anticipé de la condui
 
 Since 2024, French learners are required to use Kopilote, a regulator-mandated digital livret that uploads driving data to the publisher's servers and shares it with the auto-école. The most visible alternative, Coach AAC, is published by an insurance group and requests always-on location for opaque automatic detection. Both produce data the user does not control and cannot meaningfully export. Kilomètre is a parallel personal record that does not replace either, but does what neither does: it stays on the phone.
 
-The app:
+The app, today:
 
-- Records GPS routes locally during driving sessions.
-- Captures the accompagnateur's signature on the device at the end of each session.
-- Maintains a tamper-evident hash chain across sessions so the record is verifiably intact.
-- Exports data as GPX, CSV, and JSON for use with any other tool.
-- Works offline. Weather and road-type classification fetch in the background when a network appears.
+- Records GPS routes locally during driving sessions, with live distance and speed, pause/resume, and reliable foreground-service capture.
+- Shows each drive on a map with a gradient route line and a scrubbable drive replay.
+- Tracks progress toward the AAC goal, including the rendez-vous-pédagogique milestones.
+- Exports a session as GPX (share or save to a folder).
+- Works offline; the only network call is a user-initiated update check.
+
+Planned (the full vision — see `docs/ROADMAP.md`):
+
+- Capture the accompagnateur's signature on the device at the end of each session.
+- Maintain a tamper-evident hash chain across sessions so the record is verifiably intact.
+- Auto-classify road type and fetch weather/day-night in the background when a network appears.
+- Export CSV and JSON, and an optionally-encrypted backup ZIP.
 
 ## What it is not
 
