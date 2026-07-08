@@ -1,7 +1,7 @@
 # Roadmap
 
-Where Kilomètre is and where it's going. The current public release is **0.3.0**,
-a beta — the app records and reviews drives but cannot yet sign them. `1.0.0` is
+Where Kilomètre is and where it's going. The current public release is **0.3.1**
+(the public-beta line opened at 0.3.0), a beta — the app records and reviews drives but cannot yet sign them. `1.0.0` is
 reserved for the point where the livret is genuinely trustworthy: signing,
 integrity, and export all in place. It is a milestone, not a number to drift into.
 
@@ -11,7 +11,7 @@ integrity, and export all in place. It is a milestone, not a number to drift int
 sampling at 1 Hz, the session lifecycle (start, auto-pause, manual pause/resume,
 auto-stop), cold-boot recovery, and first-launch onboarding.
 
-**Phase 2 — Map and viewing (current — first public beta, 0.3.0).** Session detail screen with a
+**Phase 2 — Map and viewing (current — public-beta line, 0.3.0 → 0.3.1).** Session detail screen with a
 MapLibre route map (direction-of-travel gradient), an elevation/speed chart,
 drive replay with a moving dot and camera follow, a sessions list with route
 thumbnails, a progress tracker, GPX export, and a full Settings hub. Recent

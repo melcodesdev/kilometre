@@ -1,6 +1,6 @@
 # Decisions
 
-> **Design document.** Describes the intended design and may run ahead of the current build (0.3.0). See `ROADMAP.md` for what has actually shipped.
+> **Design document.** Describes the intended design and may run ahead of the current build (0.3.1). See `ROADMAP.md` for what has actually shipped.
 
 
 Every architectural and scope decision made during planning, with the alternatives considered and rejected. New decisions during development are recorded in the project's history; major ones get promoted here.

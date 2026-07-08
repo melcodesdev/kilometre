@@ -1,6 +1,6 @@
 # Data Model
 
-> **Design document.** Describes the intended design and may run ahead of the current build (0.3.0). See `ROADMAP.md` for what has actually shipped.
+> **Design document.** Describes the intended design and may run ahead of the current build (0.3.1). See `ROADMAP.md` for what has actually shipped.
 
 
 The Room database schema, the hash chain math, and the JSON metadata format used in the hybrid columns.

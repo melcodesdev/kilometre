@@ -1,6 +1,6 @@
 # Features
 
-> **Design document.** Describes the intended design and may run ahead of the current build (0.3.0). See `ROADMAP.md` for what has actually shipped.
+> **Design document.** Describes the intended design and may run ahead of the current build (0.3.1). See `ROADMAP.md` for what has actually shipped.
 
 
 Every feature Kilomètre has or intends to have, with acceptance criteria. This is a design catalogue of intent, NOT a ship-status list — see `ROADMAP.md` for what has actually shipped in the current release.

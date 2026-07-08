@@ -1,6 +1,6 @@
 # F-Droid Submission Checklist
 
-> **Design document.** Describes the intended design and may run ahead of the current build (0.3.0). See `ROADMAP.md` for what has actually shipped.
+> **Design document.** Describes the intended design and may run ahead of the current build (0.3.1). See `ROADMAP.md` for what has actually shipped.
 
 
 Everything required for Kilomètre to be accepted into F-Droid's main repository. Based on F-Droid's Inclusion Policy and Inclusion How-To, current as of May 2026.

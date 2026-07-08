@@ -1,13 +1,13 @@
 # Privacy
 
 What data Kilomètre touches, where it goes, and what we promise. This document
-describes the app as it is **today (0.3.0)** and flags what is planned but not yet
+describes the app as it is **today (0.3.1)** and flags what is planned but not yet
 built. If this ever diverges from `README.md`, this document wins.
 
 ## Summary
 
 Kilomètre stores driving data on your phone and does not upload it anywhere. As
-of 0.3.0 the app is effectively offline: the only outbound network call is an
+of 0.3.1 the app is effectively offline: the only outbound network call is an
 **optional, manual update check** you trigger yourself in Settings. There is no
 account, no telemetry, and no cloud. You can export your data in open formats,
 delete individual sessions in the app, and delete everything by uninstalling.
@@ -37,7 +37,7 @@ identifiers, or a user account — because there is no account system.
 
 ## Network calls
 
-As of 0.3.0 the app makes exactly one kind of outbound call:
+As of 0.3.1 the app makes exactly one kind of outbound call:
 
 ### Update check (manual)
 
@@ -67,7 +67,7 @@ insurance API. None are present in the app.
 
 ## Permissions
 
-The permissions Kilomètre actually declares (0.3.0), and why:
+The permissions Kilomètre actually declares (0.3.1), and why:
 
 | Permission | Why |
 |---|---|
@@ -138,4 +138,4 @@ warranty. This describes intended behavior; bugs are possible — report them.
 
 ## Last updated
 
-For 0.3.0.
+For 0.3.1.

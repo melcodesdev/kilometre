@@ -9,7 +9,7 @@
 [![Latest release](https://img.shields.io/github/v/release/melcodesdev/kilometre?label=release&color=success)](https://github.com/melcodesdev/kilometre/releases/latest)
 [![Privacy: on-device](https://img.shields.io/badge/Privacy-on--device-success)](docs/PRIVACY.md)
 
-**Status:** Active development (0.3.0 — the first public beta; still pre-1.0). Phase 1 (session engine) and Phase 2 (route map) are complete; signing and integrity (Phase 3) are next.
+**Status:** Active development (0.3.1 — public beta, opened at 0.3.0; still pre-1.0). Phase 1 (session engine) and Phase 2 (route map) are complete; signing and integrity (Phase 3) are next.
 
 ## What it is
 

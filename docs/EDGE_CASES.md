@@ -1,6 +1,6 @@
 # Edge Cases
 
-> **Design document.** Describes the intended design and may run ahead of the current build (0.3.0). See `ROADMAP.md` for what has actually shipped.
+> **Design document.** Describes the intended design and may run ahead of the current build (0.3.1). See `ROADMAP.md` for what has actually shipped.
 
 
 The unfun parts of the design. The cases that break naive implementations and where 80% of the project's real complexity hides.
