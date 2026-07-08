@@ -93,6 +93,12 @@
     <string name="today_recording_label">Enregistrement</string>
     <string name="today_distance_value">%1$.2f</string>
     <string name="today_km_unit">km</string>
+    <!-- Vitesse instantanée affichée pendant l'enregistrement, ex. « 42 km/h ». -->
+    <string name="today_speed_value">%1$d km/h</string>
+    <!-- Dialogue de confirmation à l'appui sur Arrêter, pour éviter de terminer un trajet par erreur. -->
+    <string name="stop_confirm_title">Terminer ce trajet ?</string>
+    <string name="stop_confirm_body">Cela termine la session. Si vous vous arrêtez juste un instant, utilisez plutôt Pause pour garder le trajet en un seul morceau.</string>
+    <string name="stop_confirm_confirm">Terminer</string>
 
     <!-- Foreground service notification. -->
     <string name="notification_channel_name">Session d\'enregistrement</string>
@@ -208,6 +214,8 @@
     <string name="settings_smoothing_low">Faible</string>
     <string name="settings_smoothing_medium">Moyen</string>
     <string name="settings_smoothing_high">Élevé</string>
+    <!-- Explication ⓘ partagée par les lignes de lissage altitude et vitesse. -->
+    <string name="settings_smoothing_hint">Le lissage fait la moyenne de chaque point avec ses voisins pour atténuer les à-coups du GPS. Plus élevé donne une courbe plus lisse qui masque le bruit ; plus faible conserve les détails mais montre plus d\'irrégularités.</string>
     <string name="settings_chart_grid">Afficher la grille</string>
     <string name="settings_chart_grid_hint">Grille à deux axes sur le graphique d\'altitude</string>
     <string name="settings_chart_altitude_color">Couleur de l\'altitude</string>

@@ -96,6 +96,12 @@
     <string name="today_recording_label">Recording</string>
     <string name="today_distance_value">%1$.2f</string>
     <string name="today_km_unit">km</string>
+    <!-- Live current speed shown while recording, e.g. "42 km/h". -->
+    <string name="today_speed_value">%1$d km/h</string>
+    <!-- Confirm dialog when tapping Stop, to avoid ending a drive by mistake. -->
+    <string name="stop_confirm_title">End this drive?</string>
+    <string name="stop_confirm_body">This finishes the session. If you\'re only stopping for a moment, use Pause instead so the drive stays in one piece.</string>
+    <string name="stop_confirm_confirm">End drive</string>
 
     <!-- Foreground service notification. -->
     <string name="notification_channel_name">Recording session</string>
@@ -212,6 +218,8 @@
     <string name="settings_smoothing_low">Low</string>
     <string name="settings_smoothing_medium">Medium</string>
     <string name="settings_smoothing_high">High</string>
+    <!-- ⓘ explainer shared by the altitude and speed smoothing rows. -->
+    <string name="settings_smoothing_hint">Smoothing averages each point with its neighbours to even out GPS jitter. Higher means a smoother line that hides noise; lower keeps more detail but shows more wobble.</string>
     <string name="settings_chart_grid">Show gridlines</string>
     <string name="settings_chart_grid_hint">Dual-axis grid on the elevation chart</string>
     <string name="settings_chart_altitude_color">Altitude colour</string>

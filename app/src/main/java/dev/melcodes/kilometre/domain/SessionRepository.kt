@@ -6,7 +6,11 @@ import dev.melcodes.kilometre.domain.models.GpsPoint
 import dev.melcodes.kilometre.domain.models.Session
 import dev.melcodes.kilometre.domain.models.SessionState
 import java.io.File
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 
@@ -34,6 +38,20 @@ class SessionRepository(
 
     fun totalDistanceMeters(driverId: Long): Flow<Double> =
         sessionDao.observeTotalDistanceMeters(driverId)
+
+    // Live current speed (m/s) of the active session's most recent GPS
+    // sample, or null when nothing is recording or the newest sample
+    // carried no speed. flatMapLatest re-subscribes to the newest active
+    // session's latest-point flow whenever the active row changes, so the
+    // Today screen collects a single flow regardless of which session is
+    // live. The service pauses GPS on manual pause, so no new samples land
+    // and the value simply stays put until resume — the screen hides it
+    // while paused rather than showing a stale number.
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val currentSpeedMps: Flow<Float?> = activeSession.flatMapLatest { session ->
+        if (session == null) flowOf(null)
+        else gpsPointDao.observeLatestForSession(session.id).map { it?.speedMps }
+    }
 
     // One session observed by id, for the detail screen. Re-emits when the
     // row changes (a future edit, a signature) and emits null if the row

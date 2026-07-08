@@ -81,6 +81,10 @@ fun MapReplaySettingsScreen(
         stringResource(R.string.settings_replay_pace_hint)
     val scaleInfo = stringResource(R.string.settings_replay_scale) to
         stringResource(R.string.settings_replay_scale_hint)
+    val altitudeSmoothingInfo = stringResource(R.string.settings_altitude_smoothing) to
+        stringResource(R.string.settings_smoothing_hint)
+    val speedSmoothingInfo = stringResource(R.string.settings_speed_smoothing) to
+        stringResource(R.string.settings_smoothing_hint)
 
     val layersIcon = ImageVector.vectorResource(R.drawable.ic_layers)
     val gradientIcon = ImageVector.vectorResource(R.drawable.ic_gradient)
@@ -220,6 +224,7 @@ fun MapReplaySettingsScreen(
                         ),
                         current = altitudeSmoothing,
                         onSet = { scope.launch { container.setAltitudeSmoothingHalf(it) } },
+                        onInfo = { infoDialog = altitudeSmoothingInfo },
                     )
                     RowDivider()
                     SegmentedSettingRow(
@@ -233,6 +238,7 @@ fun MapReplaySettingsScreen(
                         ),
                         current = speedSmoothing,
                         onSet = { scope.launch { container.setSpeedSmoothingHalf(it) } },
+                        onInfo = { infoDialog = speedSmoothingInfo },
                     )
                     RowDivider()
                     SettingsRow(

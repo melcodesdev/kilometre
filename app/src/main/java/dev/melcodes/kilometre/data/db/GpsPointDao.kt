@@ -42,4 +42,10 @@ interface GpsPointDao {
     // trip from disk every time a sample lands.
     @Query("SELECT * FROM gps_point WHERE sessionId = :sessionId ORDER BY timestamp DESC LIMIT 1")
     suspend fun latestForSession(sessionId: Long): GpsPoint?
+
+    // Reactive version of latestForSession: re-emits the newest point as
+    // each sample lands. Backs the live current-speed readout on the
+    // Today screen while a session records.
+    @Query("SELECT * FROM gps_point WHERE sessionId = :sessionId ORDER BY timestamp DESC LIMIT 1")
+    fun observeLatestForSession(sessionId: Long): Flow<GpsPoint?>
 }

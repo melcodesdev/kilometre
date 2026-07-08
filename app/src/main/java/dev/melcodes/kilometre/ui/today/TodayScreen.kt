@@ -29,12 +29,14 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -58,6 +60,7 @@ import androidx.core.content.ContextCompat
 import dev.melcodes.kilometre.KilometreApp
 import dev.melcodes.kilometre.LocationService
 import dev.melcodes.kilometre.R
+import kotlin.math.roundToInt
 import kotlinx.coroutines.launch
 
 // "Today" tab — the home screen. Two states:
@@ -78,7 +81,13 @@ fun TodayScreen(modifier: Modifier = Modifier) {
         .collectAsStateWithLifecycle(initialValue = 0.0)
     val driver by container.database.driverDao().observeDriver()
         .collectAsStateWithLifecycle(initialValue = null)
+    val currentSpeedMps by container.sessionRepository.currentSpeedMps
+        .collectAsStateWithLifecycle(initialValue = null)
     var permissionError by remember { mutableStateOf(false) }
+    // Guards the Stop button: a mistap ends the session and splits a
+    // single drive into two, so confirm first (a real problem that has
+    // already happened — see TODO "Merge two split sessions").
+    var showStopConfirm by remember { mutableStateOf(false) }
 
     // Hold the screen awake only while a session is actively recording and the
     // user has opted in. This is a window flag, not a service concern — the
@@ -155,10 +164,17 @@ fun TodayScreen(modifier: Modifier = Modifier) {
 
         val active = activeSession
         if (active != null) {
+            val paused = active.manualPauseStartedAt != null
+            // Hide speed while paused — GPS is off, so the last sample's
+            // value would be stale. km/h = m/s × 3.6, rounded to a whole
+            // number for a glanceable readout.
+            val speedKmh = if (paused) null
+            else ((currentSpeedMps ?: 0f) * 3.6f).roundToInt()
             RecordingHero(
                 distanceKm = active.distanceMeters / 1000.0,
                 sessionId = active.id,
-                paused = active.manualPauseStartedAt != null,
+                paused = paused,
+                speedKmh = speedKmh,
             )
         } else {
             IdleHero(
@@ -210,7 +226,7 @@ fun TodayScreen(modifier: Modifier = Modifier) {
             }
             Spacer(Modifier.size(12.dp))
             Button(
-                onClick = { stopSessionAndService() },
+                onClick = { showStopConfirm = true },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),
@@ -252,6 +268,32 @@ fun TodayScreen(modifier: Modifier = Modifier) {
                 )
             }
         }
+    }
+
+    if (showStopConfirm) {
+        AlertDialog(
+            onDismissRequest = { showStopConfirm = false },
+            title = { Text(stringResource(R.string.stop_confirm_title)) },
+            text = { Text(stringResource(R.string.stop_confirm_body)) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showStopConfirm = false
+                        stopSessionAndService()
+                    },
+                ) {
+                    Text(
+                        text = stringResource(R.string.stop_confirm_confirm),
+                        color = MaterialTheme.colorScheme.error,
+                    )
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showStopConfirm = false }) {
+                    Text(stringResource(R.string.dialog_cancel))
+                }
+            },
+        )
     }
 }
 
@@ -317,7 +359,7 @@ private fun IdleHero(totalKm: Double, goalKm: Int) {
 // number. When paused the dot stops pulsing and dims to a neutral colour, and
 // the label flips to "Paused" — the distance freezes because GPS is off.
 @Composable
-private fun RecordingHero(distanceKm: Double, sessionId: Long, paused: Boolean) {
+private fun RecordingHero(distanceKm: Double, sessionId: Long, paused: Boolean, speedKmh: Int?) {
     // rememberInfiniteTransition drives a value that loops forever while
     // this composable is on screen — here it fades the dot in and out.
     val transition = rememberInfiniteTransition(label = "recording-pulse")
@@ -365,6 +407,15 @@ private fun RecordingHero(distanceKm: Double, sessionId: Long, paused: Boolean) 
             style = MaterialTheme.typography.headlineSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(bottom = 12.dp),
+        )
+    }
+    // Live current speed, only while actively recording (null when paused).
+    if (speedKmh != null) {
+        Spacer(Modifier.size(4.dp))
+        Text(
+            text = stringResource(R.string.today_speed_value, speedKmh),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.primary,
         )
     }
     Spacer(Modifier.size(8.dp))
