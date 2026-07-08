@@ -27,13 +27,15 @@ data class GithubRelease(
 //
 // Update ordering follows the project's own rule: compare `versionCode`, not the
 // versionName, since a versionName can read "lower" than an older tag. Each
-// release's notes carry a "versionCode N" line by convention; that's what's
-// parsed here. A release without it is treated as having an unknown code and is
+// release's notes carry a standalone "versionCode N" line by convention; that's
+// what's parsed here. The match is anchored to a whole line (MULTILINE) so an
+// inline prose mention like "(versionCode 41)" isn't picked up ahead of the real
+// line. A release without the line is treated as having an unknown code and is
 // never offered as an update.
 object GithubUpdateClient {
     private const val RELEASES_URL =
         "https://api.github.com/repos/melcodesdev/kilometre/releases?per_page=20"
-    private val VERSION_CODE_RE = Regex("""versionCode\s+(\d+)""")
+    private val VERSION_CODE_RE = Regex("""(?m)^\s*versionCode\s+(\d+)\s*$""")
 
     // Fetches the recent releases, newest first. Returns null on any failure
     // (no network, timeout, rate limit, parse error) — "couldn't check" is a
